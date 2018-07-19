@@ -18,7 +18,9 @@ SOURCES += main.cpp\
     signindialog.cpp \
     showchart.cpp \
     AxisTag.cpp \
-    qcustomplot.cpp
+    qcustomplot.cpp \
+    showchart_2.cpp \
+    showchart_3.cpp
 
 HEADERS  += mainwindow.h \
     logindialog.h \
@@ -26,9 +28,13 @@ HEADERS  += mainwindow.h \
     qsqlconnect.h \
     showchart.h \
     AxisTag.h \
-    qcustomplot.h
+    qcustomplot.h \
+    showchart_2.h \
+    showchart_3.h
 
 FORMS    += mainwindow.ui \
     logindialog.ui \
     signindialog.ui \
-    showchart.ui
+    showchart.ui \
+    showchart_2.ui \
+    showchart_3.ui

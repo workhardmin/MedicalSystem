@@ -1,5 +1,5 @@
-#ifndef SHOWCHART_H
-#define SHOWCHART_H
+#ifndef SHOWCHART_2_H
+#define SHOWCHART_2_H
 
 #include <QDialog>
 #include "qcustomplot.h"
@@ -7,19 +7,19 @@
 #include <QVector>
 
 namespace Ui {
-class showchart;
+class showchart_2;
 }
 
-class showchart : public QDialog
+class showchart_2 : public QDialog
 {
     Q_OBJECT
 
 public:
-  explicit showchart(QWidget *parent = 0);
-  ~showchart();
+  explicit showchart_2(QWidget *parent = 0);
+  ~showchart_2();
 
     //以下是新添加的程序
-  double Buff_1[100];    //数据缓冲数组
+  double Buff_2[100];    //数据缓冲数组
   unsigned char CurrentData;
   //以上是新添加的程序
 
@@ -34,10 +34,10 @@ private slots:
 
   void on_buttonBox_accepted();
 
-  void chartsignal_1();
+  void chartsignal_2();
 
 private:
-  Ui::showchart *ui;
+  Ui::showchart_2 *ui;
   QCustomPlot *mPlot;
   QPointer<QCPGraph> mGraph1;
   AxisTag *mTag1;
@@ -48,4 +48,4 @@ private:
    //
 };
 
-#endif // SHOWCHART_H
+#endif // SHOWCHART_2_H

@@ -30,8 +30,14 @@ private slots:
     void receivelogin();
 
     void on_ShowChart_clicked();
+    void on_showchart_2_clicked();
+
+    void on_showchart_3_clicked();
+
 signals:
-    void  jumptochart();
+    void  jumptochart_1();
+    void  jumptochart_2();
+    void  jumptochart_3();
 
 
 private:

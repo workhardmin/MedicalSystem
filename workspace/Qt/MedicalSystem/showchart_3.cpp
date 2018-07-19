@@ -1,26 +1,25 @@
-#include "showchart.h"
-#include "ui_showchart.h"
+#include "showchart_3.h"
+#include "ui_showchart_3.h"
 #include <QTimer>
 #include <QTime>
 
-showchart::showchart(QWidget *parent) :
+showchart_3::showchart_3(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::showchart),
+    ui(new Ui::showchart_3),
     mPlot(0),
     mTag1(0)
 {
     ui->setupUi(this);
-
     unsigned int i=0;
 
     for( i=0;i<100;i++)
     {
-        Buff_1[i] = 0;
+        Buff_3[i] = 0;
     }
     CurrentData=0;
     flag=0;
 
-    mPlot = new QCustomPlot(ui->table);
+    mPlot = new QCustomPlot(ui->table_3);
     mPlot->resize(770,300);
 
     // configure plot to have two right axes:
@@ -33,7 +32,7 @@ showchart::showchart(QWidget *parent) :
 
     // create graphs:
     mGraph1 = mPlot->addGraph(mPlot->xAxis, mPlot->axisRect()->axis(QCPAxis::atRight, 0));
-    mGraph1->setPen(QPen(Qt::red));
+    mGraph1->setPen(QPen(Qt::blue));
 
     // create tags with newly introduced AxisTag class (see axistag.h/.cpp):
     mTag1 = new AxisTag(mGraph1->valueAxis());
@@ -43,12 +42,12 @@ showchart::showchart(QWidget *parent) :
     mDataTimer.start(80);
 }
 
-showchart::~showchart()
+showchart_3::~showchart_3()
 {
     delete ui;
 }
 
-void showchart::timerSlot()
+void showchart_3::timerSlot()
 {
     /*//以下为修改后的程序
     QVector<double> x(101), y(101); // initialize with entries 0..100
@@ -71,13 +70,12 @@ void showchart::timerSlot()
     if(flag<=99)
     {  //当图形中不足100个点时，进入到if句里处理
 
-        Buff_1[flag]=CurrentData;//将新数据存入缓冲区
+        Buff_3[flag]=CurrentData;//将新数据存入缓冲区
         unsigned int i=0;
         for(i=0;i<=flag;i++)
         {
             Xvalue[i]=i;
-            Yvalue[i]=Buff_1[i];
-
+            Yvalue[i]=Buff_3[i];
         }//分别赋值X轴，Y轴值，产生多少个实时值，就赋值多少个点
         flag++;
 
@@ -85,7 +83,6 @@ void showchart::timerSlot()
 
         mPlot->xAxis->rescale();
         mGraph1->rescaleValueAxis(false, true);
-
         mPlot->xAxis->setRange(mPlot->xAxis->range().upper, 100, Qt::AlignRight);
 
         // update the vertical axis tag positions and texts to match the rightmost data point of the graphs:
@@ -101,19 +98,18 @@ void showchart::timerSlot()
     //当实时数据超过100个时，进行以下处理
     for(int i=0;i<99;i++)
     {
-        Buff_1[i]=Buff_1[i+1];
+        Buff_3[i]=Buff_3[i+1];
     }
 
-    Buff_1[99]=CurrentData;
+    Buff_3[99]=CurrentData;
     //缓冲区整体左移，Buff[0]丢弃，Buff[99]接收新数据
     for(int i=0;i<100;i++)
     {
         Xvalue[i] = flag-(99-i);
-        Yvalue[i] =Buff_1[i];
+        Yvalue[i] =Buff_3[i];
     }//X,Y轴赋满100个值，其中X轴要跟着增加
 
     mGraph1->setData(Xvalue,Yvalue);
-
 
     flag++;
 
@@ -131,19 +127,17 @@ void showchart::timerSlot()
 }
 
 
-void  showchart::ReadyShowLine()
+void  showchart_3::ReadyShowLine()
 
 {
 
     CurrentData=CurrentData+5;
 
-    if(CurrentData>=80) CurrentData=0;//产生锯齿波，最大值是75
-
+    if(CurrentData>=30) CurrentData=0;//产生锯齿波，最大值是75
     timerSlot();
 }
 
-void showchart::chartsignal_1()
+void showchart_3::chartsignal_3()
 {
     this->show();
 }
-

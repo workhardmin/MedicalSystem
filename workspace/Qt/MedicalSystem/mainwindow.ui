@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>645</width>
+    <height>416</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,14 +17,40 @@
    <widget class="QPushButton" name="ShowChart">
     <property name="geometry">
      <rect>
-      <x>130</x>
+      <x>30</x>
+      <y>20</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>图一</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="showchart_2">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
       <y>60</y>
       <width>75</width>
       <height>23</height>
      </rect>
     </property>
     <property name="text">
-     <string>PushButton</string>
+     <string>图二</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="showchart_3">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>100</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>图三</string>
     </property>
    </widget>
   </widget>
@@ -33,7 +59,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>400</width>
+     <width>645</width>
      <height>23</height>
     </rect>
    </property>
