@@ -19,6 +19,7 @@ signinDialog::~signinDialog()
 void signinDialog::on_cancelbutton_clicked()
 {
     this->close();
+    emit showlogin();
 }
 
 void signinDialog::on_signinbutton_clicked()

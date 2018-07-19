@@ -11,6 +11,7 @@
 #include "qcustomplot.h"
 #include "AxisTag.h"
 #include <QVector>
+#include <QTcpSocket>
 
 namespace Ui {
 class MainWindow;
@@ -27,12 +28,20 @@ public:
 
 private slots:
 
+    void socket_Read_Data();
+
+    void socket_Disconnected();
+
     void receivelogin();
 
     void on_ShowChart_clicked();
     void on_showchart_2_clicked();
 
     void on_showchart_3_clicked();
+
+    void on_ConnectButton_clicked();
+
+    void on_sendButton_clicked();
 
 signals:
     void  jumptochart_1();
@@ -42,6 +51,7 @@ signals:
 
 private:
     Ui::MainWindow *ui;
+    QTcpSocket *socket;
 };
 
 #endif // MAINWINDOW_H
